@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+use crate::components::*;
 use crate::Route;
 
 #[derive(Clone)]
@@ -25,14 +26,16 @@ pub fn Blog(id: i32) -> Element {
         image_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80".to_string(),
         author: "John Doe".to_string(),
     };
-
     rsx! {
-        article { class: "min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
+            FrontendLayout {
+                // title: "Blog".to_string(),
+            article { class: "min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
             // Hero Section
             div { class: "max-w-4xl mx-auto my-12",
-                // Header
-                header { class: "mb-8",
-                    div { class: "flex items-center justify-between mb-4",
+            // Header
+            header { class: "mb-8",
+            div { class: "flex items-center justify-between mb-4",
+                        span { class:"hidden","{post.id}" }
                         Link {
                             to: Route::BlogArchive {},
                             class: "text-blue-600 hover:text-blue-800 flex items-center",
@@ -98,5 +101,6 @@ pub fn Blog(id: i32) -> Element {
                 }
             }
         }
+    }
     }
 }

@@ -1,4 +1,4 @@
-use crate::Route;
+use crate::admin::components::AdminLayout;
 use dioxus::prelude::*;
 
 #[component]
@@ -12,53 +12,31 @@ pub fn AdminDashboard() -> Element {
     ];
 
     rsx! {
-        div { class: "min-h-screen bg-gray-100",
-            // Top Navigation
-            nav { class: "bg-white shadow-sm",
-                div { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-                    div { class: "flex justify-between h-16",
-                        div { class: "flex my-12",
-                            div { class: "flex-shrink-0 flex items-center",
-                                h1 { class: "text-xl font-bold text-gray-900", "Admin Dashboard" }
-                            }
-                        }
-                        div { class: "flex items-center",
-                            Link {
-                                to: Route::Home {},
-                                class: "text-gray-600 hover:text-gray-900",
-                                "Back to Site"
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Main Content
-            main { class: "max-w-7xl mx-auto py-6 sm:px-6 lg:px-8",
-                // Stats Grid
-                div { class: "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4",
-                    {stats.into_iter().map(|(title, value, change, color)| {
-                        rsx! {
-                            div { class: "bg-white overflow-hidden shadow rounded-lg",
-                                div { class: "p-5",
-                                    div { class: "flex items-center",
-                                        div { class: "flex-shrink-0",
-                                            div { class: "rounded-md p-3 {color}",
-                                                // You can add icons here
-                                            }
+        AdminLayout {
+            title: "Dashboard".to_string(),
+            // Stats Grid
+            div { class: "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4",
+                {stats.into_iter().map(|(title, value, change, color)| {
+                    rsx! {
+                        div { class: "bg-white overflow-hidden shadow rounded-lg",
+                            div { class: "p-5",
+                                div { class: "flex items-center",
+                                    div { class: "flex-shrink-0",
+                                        div { class: "rounded-md p-3 {color}",
+                                            // You can add icons here
                                         }
-                                        div { class: "ml-5 w-0 flex-1",
-                                            dl {
-                                                dt { class: "text-sm font-medium text-gray-500 truncate",
-                                                    "{title}"
+                                    }
+                                    div { class: "ml-5 w-0 flex-1",
+                                        dl {
+                                            dt { class: "text-sm font-medium text-gray-500 truncate",
+                                                "{title}"
+                                            }
+                                            dd { class: "flex items-baseline",
+                                                div { class: "text-2xl font-semibold text-gray-900",
+                                                    "{value}"
                                                 }
-                                                dd { class: "flex items-baseline",
-                                                    div { class: "text-2xl font-semibold text-gray-900",
-                                                        "{value}"
-                                                    }
-                                                    div { class: "ml-2 flex items-baseline text-sm font-semibold text-green-600",
-                                                        "{change}"
-                                                    }
+                                                div { class: "ml-2 flex items-baseline text-sm font-semibold text-green-600",
+                                                    "{change}"
                                                 }
                                             }
                                         }
@@ -66,51 +44,51 @@ pub fn AdminDashboard() -> Element {
                                 }
                             }
                         }
-                    })}
-                }
+                    }
+                })}
+            }
 
-                // Recent Activity
-                div { class: "mt-8",
-                    div { class: "bg-white shadow rounded-lg",
-                        div { class: "px-4 py-5 sm:px-6",
-                            h3 { class: "text-lg leading-6 font-medium text-gray-900",
-                                "Recent Activity"
-                            }
+            // Recent Activity
+            div { class: "mt-8",
+                div { class: "bg-white shadow rounded-lg",
+                    div { class: "px-4 py-5 sm:px-6",
+                        h3 { class: "text-lg leading-6 font-medium text-gray-900",
+                            "Recent Activity"
                         }
-                        div { class: "border-t border-gray-200",
-                            div { class: "px-4 py-5 sm:p-6",
-                                // Sample activity items
-                                div { class: "flow-root",
-                                    ul { class: "-mb-8",
-                                        {vec![
-                                            ("New user registration", "2 minutes ago"),
-                                            ("Blog post published", "1 hour ago"),
-                                            ("Comment added", "3 hours ago"),
-                                            ("User profile updated", "5 hours ago"),
-                                        ].into_iter().map(|(action, time)| {
-                                            rsx! {
-                                                li {
-                                                    div { class: "relative pb-8",
-                                                        div { class: "relative flex space-x-3",
+                    }
+                    div { class: "border-t border-gray-200",
+                        div { class: "px-4 py-5 sm:p-6",
+                            // Sample activity items
+                            div { class: "flow-root",
+                                ul { class: "-mb-8",
+                                    {vec![
+                                        ("New user registration", "2 minutes ago"),
+                                        ("Blog post published", "1 hour ago"),
+                                        ("Comment added", "3 hours ago"),
+                                        ("User profile updated", "5 hours ago"),
+                                    ].into_iter().map(|(action, time)| {
+                                        rsx! {
+                                            li {
+                                                div { class: "relative pb-8",
+                                                    div { class: "relative flex space-x-3",
+                                                        div {
+                                                            div { class: "h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white" }
+                                                        }
+                                                        div { class: "min-w-0 flex-1 pt-1.5 flex justify-between space-x-4",
                                                             div {
-                                                                div { class: "h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white" }
-                                                            }
-                                                            div { class: "min-w-0 flex-1 pt-1.5 flex justify-between space-x-4",
-                                                                div {
-                                                                    p { class: "text-sm text-gray-500",
-                                                                        "{action}"
-                                                                    }
-                                                                    p { class: "text-sm text-gray-500",
-                                                                        "{time}"
-                                                                    }
+                                                                p { class: "text-sm text-gray-500",
+                                                                    "{action}"
+                                                                }
+                                                                p { class: "text-sm text-gray-500",
+                                                                    "{time}"
                                                                 }
                                                             }
                                                         }
                                                     }
                                                 }
                                             }
-                                        })}
-                                    }
+                                        }
+                                    })}
                                 }
                             }
                         }

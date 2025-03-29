@@ -2,11 +2,11 @@ use crate::components::*;
 use dioxus::prelude::*;
 
 #[component]
-pub fn New() -> Element {
+pub fn Services() -> Element {
     rsx! {
         FrontendLayout {
-            title: "New".to_string(),
-            h1 { "New" }
+            title: "Services".to_string(),
+            h1 { "Services" }
         }
     }
 }

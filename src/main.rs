@@ -14,7 +14,7 @@ fn main() {
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
 pub enum Route {
-    #[layout(Navbar)]
+    // #[layout(Navbar)]
     #[route("/")]
     Home {},
     #[route("/blog")]
@@ -23,6 +23,8 @@ pub enum Route {
     Blog { id: i32 },
     #[route("/new")]
     New {},
+    #[route("/services")]
+    Services {},
     #[route("/admin")]
     AdminDashboard {},
     #[route("/admin/users")]

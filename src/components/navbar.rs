@@ -8,17 +8,22 @@ pub fn Navbar() -> Element {
 
     rsx! {
         nav { class: "fixed w-full bg-gray-900/80 backdrop-blur-md z-50 transition-all duration-300",
-            div { class: "container mx-auto px-4",
+            div { class: "container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
                 div { class: "flex justify-between items-center h-16",
                     // Logo
-                    Link {
-                        class: "text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300",
-                        to: Route::Home {},
-                        "TechStart"
+                    div { class: "flex items-center",
+                        div { class: "shrink-0",
+                            Link {
+                                class: "text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300",
+                                to: Route::Home {},
+                                "TechStart"
+                            }
+                        }
                     }
 
                     // Desktop Navigation
-                    div { class: "hidden md:flex items-center space-x-8",
+                div { class: "hidden md:block",
+                     div { class: "ml-10 flex items-baseline space-x-4",
                         Link {
                             class: "text-gray-300 hover:text-white transition-colors duration-300",
                             to: Route::Home {},
@@ -26,7 +31,7 @@ pub fn Navbar() -> Element {
                         }
                         Link {
                             class: "text-gray-300 hover:text-white transition-colors duration-300",
-                            to: Route::New {},
+                            to: Route::Services {},
                             "Services"
                         }
                         Link {
@@ -39,6 +44,7 @@ pub fn Navbar() -> Element {
                             "Get Started"
                         }
                     }
+                }
 
                     // Mobile Menu Button
                     button {
@@ -66,7 +72,7 @@ pub fn Navbar() -> Element {
                         }
                         Link {
                             class: "block text-gray-300 hover:text-white transition-colors duration-300",
-                            to: Route::New {},
+                            to: Route::Services {},
                             "Services"
                         }
                         Link {
