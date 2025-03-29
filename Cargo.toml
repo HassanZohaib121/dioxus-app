@@ -8,6 +8,8 @@ edition = "2021"
 
 [dependencies]
 dioxus = { version = "0.6.0", features = ["router", "fullstack"] }
+gloo = "0.11.0"
+serde = { version = "1.0.215", features = ["derive"] }
 
 [features]
 default = ["web"]

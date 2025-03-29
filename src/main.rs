@@ -30,6 +30,8 @@ pub enum Route {
     UsersManagement {},
     #[route("/admin/blog-form")]
     BlogForm {},
+    // #[route("/login")]
+    // Login {},
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
