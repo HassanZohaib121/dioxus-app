@@ -28,7 +28,7 @@ pub fn Blog(id: i32) -> Element {
     };
     rsx! {
             FrontendLayout {
-                // title: "Blog".to_string(),
+                // title: post.title.clone(),
             article { class: "min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
             // Hero Section
             div { class: "max-w-4xl mx-auto my-12",

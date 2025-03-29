@@ -3,7 +3,6 @@ mod components;
 mod pages;
 
 use admin::*;
-use components::*;
 use dioxus::prelude::*;
 use pages::*;
 
@@ -29,21 +28,21 @@ pub enum Route {
     AdminDashboard {},
     #[route("/admin/users")]
     UsersManagement {},
+    #[route("/admin/blog-form")]
+    BlogForm {},
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
-// const MAIN_CSS: Asset = asset!("/assets/main.css");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
-// const TAILWIND_CSS: Asset = asset!("/input.css");
+// const MAIN_CSS: Asset = asset!("/assets/main.css");
 
 #[component]
 fn App() -> Element {
     rsx! {
         head {
-            // document::Script {src: "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@3",}
             document::Link { rel: "icon", href: FAVICON }
-            // document::Link { rel: "stylesheet", href: MAIN_CSS }
             document::Link { rel: "stylesheet", href: TAILWIND_CSS }
+            // document::Link { rel: "stylesheet", href: MAIN_CSS }
         }
         Router::<Route> {}
     }

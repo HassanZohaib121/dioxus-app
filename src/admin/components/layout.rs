@@ -18,10 +18,15 @@ pub fn AdminLayout(props: AdminLayout) -> Element {
                     div { class: "flex h-16 items-center justify-between",
                         div { class: "flex items-center",
                             div { class: "shrink-0",
-                                img {
-                                    class: "size-8",
-                                    src: "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500",
-                                    alt: "Company Logo"
+                                // img {
+                                //     class: "size-8",
+                                //     src: "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500",
+                                //     alt: "Company Logo"
+                                // }
+                                Link {
+                                    class: "text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300",
+                                    to: Route::Home {},
+                                    "TechStart"
                                 }
                             }
                             div { class: "hidden md:block",
@@ -35,6 +40,11 @@ pub fn AdminLayout(props: AdminLayout) -> Element {
                                         to: Route::UsersManagement {},
                                         class: "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white",
                                         "Users"
+                                    }
+                                    Link {
+                                        to: Route::BlogForm {},
+                                        class: "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white",
+                                        "Blog Form"
                                     }
                                 }
                             }
@@ -86,6 +96,11 @@ pub fn AdminLayout(props: AdminLayout) -> Element {
                             to: Route::UsersManagement {},
                             class: "block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white",
                             "Users"
+                        }
+                        Link {
+                            to: Route::BlogForm {},
+                            class: "block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white",
+                            "Blog Form"
                         }
                     }
                 }

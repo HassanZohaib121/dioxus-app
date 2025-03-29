@@ -1,7 +1,7 @@
 // use crate::Route;
 use dioxus::prelude::*;
 
-use crate::components::Navbar;
+use crate::components::{Footer, Navbar};
 
 #[derive(Props, PartialEq, Clone)]
 pub struct FrontendLayout {
@@ -30,6 +30,7 @@ pub fn FrontendLayout(props: FrontendLayout) -> Element {
                     {props.children}
                 }
             }
+            Footer {}
         }
     }
 }

@@ -1,9 +1,7 @@
-mod echo;
-mod hero;
+mod footer;
 mod layout;
 mod navbar;
 
-pub use echo::*;
-pub use hero::*;
+pub use footer::*;
 pub use layout::*;
 pub use navbar::*;
